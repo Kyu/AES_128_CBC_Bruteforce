@@ -2,6 +2,7 @@ package com.preciouso;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
+import com.beust.jcommander.ParameterException;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -36,7 +37,7 @@ public class Main {
     String iv;
     private byte[] ivHex;
 
-    @Parameter(names={"--pad", "--padding"}, description = "String to pad the key with if it's too short. Defaults to '#'.")
+    @Parameter(names={"--pad", "--padding"}, description = "String to pad the key with if it's too short.")
     private String padString = "#";
 
     private static final ArrayList<String> wordlist = new ArrayList<>();
@@ -48,12 +49,16 @@ public class Main {
         } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
             throw new RuntimeException(e);
         }
-
-        JCommander.newBuilder()
+        JCommander parser = JCommander.newBuilder()
                 .addObject(this)
-                .build()
-                .parse(args);
+                .build();
 
+        try {
+            parser.parse(args);
+        } catch (ParameterException ex) {
+            parser.usage();
+            System.exit(0);
+        }
 
         System.out.println("Given: ");
 
