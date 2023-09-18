@@ -3,6 +3,7 @@ Takes plaintext, ciphertext, and iv, returns a key from a dictionary padded by '
 Dictionary source: https://github.com/dwyl/english-words/blob/master/words_alpha.txt
 
 ## Build  
+(Requires a certain Java 11 or 17 feature I don't remember which one, tested on Java 19)  
 `./gradlew jar`
 
 ## Run
