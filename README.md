@@ -1,9 +1,11 @@
 # AES_128_CBC_Bruteforce
 Takes plaintext, ciphertext, and iv, returns a key from a dictionary padded by '#'  
-Dictionary source: https://github.com/dwyl/english-words/blob/master/words_alpha.txt
+Dictionary source: https://github.com/dwyl/english-words/blob/master/words_alpha.txt  
 
-## Build  
-(Requires a certain Java 11 or 17 feature I don't remember which one, tested on Java 19)  
+
+Requires `java.util.HexFormat`, a **Java 17+** feature. Tested on Java 19. 
+
+## Build   
 `./gradlew jar`
 
 ## Run
