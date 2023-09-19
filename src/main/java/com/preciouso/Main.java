@@ -22,8 +22,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HexFormat;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     @Parameter(names={"--plain_text", "--plaintext", "-p"}, required = true, description = "The plain text.")
     private String plainText;
@@ -74,11 +72,9 @@ public class Main {
         System.out.println("Padding:\t\t" + padString);
         System.out.println();
 
-        System.out.println("Trying both regular and title case of each dictionary word");
+        System.out.println("Each word is lowercase, will attempt to capitalize the first word of each for 2 encryption iterations per word.");
         System.out.println("Dictionary size: " + wordlist.size());
         System.out.println();
-
-        cipherTextHex = HexFormat.of().parseHex(cipherText);
     }
 
     public static void loadWordList() throws IOException {
@@ -138,7 +134,6 @@ public class Main {
 
         byte[] enc = cipher.doFinal(plainTextBytes);
 
-        // System.out.println(Arrays.toString(enc));
         return Arrays.equals(cipherTextHex, enc);
     }
 
